@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وجبتي - قائمة الطعام الاحترافية</title>
+    <title>وجبتي - Wajbati</title>
     <style>
         :root {
             --primary-red: #d90429;
@@ -125,7 +125,6 @@
 
 <div class="container">
     
-    <!-- قسم الأرز والوجبات الرئيسية -->
     <div class="section-title">الأرز والوجبات الرئيسية</div>
     <div class="grid">
         <div class="food-card">
@@ -134,9 +133,9 @@
                 <h3>نصف حبة مندي</h3>
                 <p class="price">3500 ريال</p>
                 <div class="controls">
-                    <button class="btn-qty" onclick="updateItem('mandi', -1, 3500)">-</button>
+                    <button class="btn-qty" onclick="updateItem('mandi', -1)">-</button>
                     <span id="q-mandi">0</span>
-                    <button class="btn-qty" onclick="updateItem('mandi', 1, 3500)">+</button>
+                    <button class="btn-qty" onclick="updateItem('mandi', 1)">+</button>
                 </div>
             </div>
         </div>
@@ -146,15 +145,14 @@
                 <h3>وجبة مضغوط دجاج</h3>
                 <p class="price">3200 ريال</p>
                 <div class="controls">
-                    <button class="btn-qty" onclick="updateItem('madghut', -1, 3200)">-</button>
+                    <button class="btn-qty" onclick="updateItem('madghut', -1)">-</button>
                     <span id="q-madghut">0</span>
-                    <button class="btn-qty" onclick="updateItem('madghut', 1, 3200)">+</button>
+                    <button class="btn-qty" onclick="updateItem('madghut', 1)">+</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- قسم المقبلات -->
     <div class="section-title">المقبلات والجانبيات</div>
     <div class="grid">
         <div class="food-card">
@@ -163,21 +161,9 @@
                 <h3>سلطة خضراء حار</h3>
                 <p class="price">500 ريال</p>
                 <div class="controls">
-                    <button class="btn-qty" onclick="updateItem('salad', -1, 500)">-</button>
+                    <button class="btn-qty" onclick="updateItem('salad', -1)">-</button>
                     <span id="q-salad">0</span>
-                    <button class="btn-qty" onclick="updateItem('salad', 1, 500)">+</button>
-                </div>
-            </div>
-        </div>
-        <div class="food-card">
-            <img src="https://images.unsplash.com/photo-1589113182021-2941b488e9f1?w=200" alt="شفوت" class="food-img">
-            <div class="food-details">
-                <h3>صحن شفوت بلدي</h3>
-                <p class="price">1200 ريال</p>
-                <div class="controls">
-                    <button class="btn-qty" onclick="updateItem('shafout', -1, 1200)">-</button>
-                    <span id="q-shafout">0</span>
-                    <button class="btn-qty" onclick="updateItem('shafout', 1, 1200)">+</button>
+                    <button class="btn-qty" onclick="updateItem('salad', 1)">+</button>
                 </div>
             </div>
         </div>
@@ -186,9 +172,8 @@
 </div>
 
 <footer>
-    <p>جميع الحقوق محفوظة لمطعم وجبتي © 2026</p>
+    <p>جميع الحقوق محفوظة لمطم وجبتي © 2026</p>
     <p>تم التصميم والبرمجة بواسطة: <br><strong>Al-Ezz Khalid | Brand Oza</strong></p>
-    <a href="https://wa.me/qr/OTOJK7QDBUQ7L1" style="color: var(--primary-green); text-decoration: none;">تواصل مع المطور 💬</a>
 </footer>
 
 <div class="cart-footer">
@@ -196,15 +181,14 @@
         <div style="font-size: 0.8rem; color: #666;">إجمالي الفاتورة</div>
         <div style="font-size: 1.2rem; font-weight: bold; color: var(--primary-red);"><span id="total-val">0</span> ريال</div>
     </div>
-    <a href="#" class="btn-send" onclick="checkout()">إتمام الطلب (واتساب)</a>
+    <a href="#" class="btn-send" onclick="checkout()">إرسال الطلب (واتساب)</a>
 </div>
 
 <script>
     let order = {
         'mandi': { name: 'نصف حبة مندي', qty: 0, price: 3500 },
         'madghut': { name: 'وجبة مضغوط دجاج', qty: 0, price: 3200 },
-        'salad': { name: 'سلطة خضراء', qty: 0, price: 500 },
-        'shafout': { name: 'صحن شفوت بلدي', qty: 0, price: 1200 }
+        'salad': { name: 'سلطة خضراء', qty: 0, price: 500 }
     };
 
     function updateItem(id, change) {
@@ -224,9 +208,10 @@
     function checkout() {
         let text = "طلب جديد من مطعم وجبتي:\n------------------\n";
         let hasItems = false;
+        
         for (let key in order) {
             if (order[key].qty > 0) {
-                text += `${order[key].name} (عدد ${order[key].qty})\n`;
+                text += `• ${order[key].name} (عدد ${order[key].qty})\n`;
                 hasItems = true;
             }
         }
@@ -236,11 +221,13 @@
             return;
         }
 
-        text += `------------------\nالإجمالي: ${document.getElementById('total-val').innerText} ريال`;
+        text += `------------------\n💰 الإجمالي: ${document.getElementById('total-val').innerText} ريال`;
         
-        // ملاحظة: الرابط أدناه هو رابط الـ QR الخاص بك كما طلبت للتواصل معك
-        // ولكن للطلبات يفضل وضع رقم المطعم المباشر wa.me/رقم_المطعم
-        window.open("https://wa.me/qr/OTOJK7QDBUQ7L1?text=" + encodeURIComponent(text));
+        // الرقم التجريبي (عدله لرقم المطعم لاحقاً بنظام 967)
+        let myNumber = "967781254324"; 
+        let whatsappUrl = "https://wa.me/" + myNumber + "?text=" + encodeURIComponent(text);
+        
+        window.open(whatsappUrl);
     }
 </script>
 
