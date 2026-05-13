@@ -3,233 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وجبتي - Wajbati</title>
+    <title>Brand Oza | براند أوزا للتصميم والحلول الرقمية</title>
+    <!-- استدعاء خط احترافي من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-red: #d90429;
-            --primary-green: #2d6a4f;
-            --dark: #1b4332;
+            --navy: #14213d; /* الكحلي المأخوذ من الشعار */
+            --gold: #d4af37; /* الذهبي المأخوذ من الشعار */
             --light-bg: #f8f9fa;
+            --dark-text: #333333;
             --white: #ffffff;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-bg);
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            color: #333;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
         }
-        header {
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            border-radius: 0 0 30px 30px;
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
         }
-        .section-title {
-            background: var(--primary-green);
-            color: white;
-            padding: 10px 20px;
-            margin: 30px 0 15px 0;
-            display: inline-block;
-            border-radius: 0 25px 25px 0;
-            font-size: 1.2rem;
+
+        /* شريط التنقل العلوي */
+        nav {
+            background-color: var(--navy);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-        .container {
-            padding: 15px;
-            max-width: 900px;
-            margin: auto;
+
+        nav .logo-text {
+            color: var(--gold);
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 1px;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+        nav ul {
+            list-style: none;
+            display: flex;
             gap: 20px;
         }
-        .food-card {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border-right: 5px solid var(--primary-red);
-        }
-        .food-img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-        }
-        .food-details {
-            padding: 15px;
-            flex-grow: 1;
-        }
-        .food-details h3 {
-            margin: 0 0 5px 0;
-            font-size: 1.1rem;
-            color: var(--dark);
-        }
-        .price {
-            color: var(--primary-red);
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        .controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        .btn-qty {
-            background: #eee;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .cart-footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: var(--white);
-            padding: 20px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-        .btn-send {
-            background: #25d366;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
+
+        nav ul li a {
+            color: var(--white);
             text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            font-weight: 700;
+            transition: 0.3s;
         }
-        footer {
+
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+
+        /* القسم الرئيسي (Hero Section) */
+        .hero {
+            background: linear-gradient(rgba(20, 33, 61, 0.9), rgba(20, 33, 61, 0.9)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80') center/cover;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 40px 20px 120px;
-            background: #eee;
-            margin-top: 50px;
+            color: var(--white);
+            padding: 20px;
+        }
+
+        .hero-logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--navy);
+            padding: 12px 35px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: 0.3s;
+            border: 2px solid var(--gold);
+        }
+
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--gold);
+        }
+
+        /* الأقسام العامة */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50%;
+            height: 4px;
+            background-color: var(--gold);
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        /* قسم من نحن */
+        .about-text {
+            max-width: 800px;
+            margin: auto;
+            font-size: 1.1rem;
+            color: #555;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--navy);
+        }
+
+        /* قسم الخدمات */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: var(--navy);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* قسم لماذا نحن */
+        .features-list {
+            list-style: none;
+            max-width: 800px;
+            margin: auto;
+            text-align: right;
+        }
+
+        .features-list li {
+            background: var(--white);
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            border-right: 5px solid var(--gold);
+        }
+
+        .features-list li strong {
+            color: var(--navy);
+            margin-left: 10px;
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 40px 20px 20px;
+            text-align: center;
+            border-top: 5px solid var(--gold);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* زر الواتساب العائم */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* تجاوب الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; padding: 15px; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-logo { width: 140px; }
+            .whatsapp-float { bottom: 20px; right: 20px; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>مطعم وجبتي - Wajbati</h1>
-    <p>طعم الأصالة في كل لقمة</p>
-</header>
+    <!-- شريط التنقل -->
+    <nav>
+        <div class="logo-text">Brand Oza</div>
+        <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#services">خدماتنا</a></li>
+            <li><a href="#why-us">لماذا نحن</a></li>
+        </ul>
+    </nav>
 
-<div class="container">
-    
-    <div class="section-title">الأرز والوجبات الرئيسية</div>
-    <div class="grid">
-        <div class="food-card">
-            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200" alt="مندي" class="food-img">
-            <div class="food-details">
-                <h3>نصف حبة مندي</h3>
-                <p class="price">3500 ريال</p>
-                <div class="controls">
-                    <button class="btn-qty" onclick="updateItem('mandi', -1)">-</button>
-                    <span id="q-mandi">0</span>
-                    <button class="btn-qty" onclick="updateItem('mandi', 1)">+</button>
-                </div>
+    <!-- القسم الرئيسي -->
+    <header id="home" class="hero">
+        <!-- ضع مسار صورتك الحقيقي هنا لاحقاً بدلاً من الرابط الموقت -->
+        <img src="https://via.placeholder.com/200x200/14213d/d4af37?text=Logo" alt="Brand Oza Logo" class="hero-logo" id="main-logo">
+        
+        <h1>Brand Oza</h1>
+        <p>شريكك الاستراتيجي للنجاح الرقمي. نجمع بين دقة الفن وتطور البرمجة لنصنع هويات بصرية وأنظمة ذكية ترفع من قيمة أعمالك.</p>
+        <a href="#about" class="btn-gold">اكتشف المزيد</a>
+    </header>
+
+    <!-- قسم من نحن -->
+    <section id="about">
+        <h2 class="section-title">من نحن؟</h2>
+        <div class="about-text">
+            <p><strong>براند أوزا</strong> ليست مجرد وكالة تصميم، بل هي مصنع للإبداع الرقمي. نعمل على تحويل الأفكار إلى واقع ملموس من خلال تصميمات تعكس هوية علامتك التجارية وبرمجيات تسهل إدارة أعمالك. سواء كنت تبحث عن شعار يرسخ في الأذهان أو نظام ذكي يدير طلبات عملائك، نحن هنا لنصنع الفارق.</p>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section id="services" style="background-color: #f1f3f5;">
+        <h2 class="section-title">خدماتنا المتميزة</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📐</div>
+                <h3>تصميم الهويات البصرية</h3>
+                <p>شعارات، كروت شخصية، مطبوعات رسمية، وتغليف المنتجات بدقة هندسية ولمسة فنية راقية.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>تطوير الويب والبرمجة</h3>
+                <p>برمجة أنظمة ذكية مثل "المنيو الرقمي للمطاعم"، مواقع تعريفية، وواجهات مستخدم تفاعلية.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>تصاميم السوشيال ميديا</h3>
+                <p>تصاميم جذابة وعصرية تزيد من تفاعل الجمهور وترفع نسبة المبيعات لعلامتك التجارية.</p>
             </div>
         </div>
-        <div class="food-card">
-            <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=200" alt="مضغوط" class="food-img">
-            <div class="food-details">
-                <h3>وجبة مضغوط دجاج</h3>
-                <p class="price">3200 ريال</p>
-                <div class="controls">
-                    <button class="btn-qty" onclick="updateItem('madghut', -1)">-</button>
-                    <span id="q-madghut">0</span>
-                    <button class="btn-qty" onclick="updateItem('madghut', 1)">+</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 
-    <div class="section-title">المقبلات والجانبيات</div>
-    <div class="grid">
-        <div class="food-card">
-            <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=200" alt="سلطة" class="food-img">
-            <div class="food-details">
-                <h3>سلطة خضراء حار</h3>
-                <p class="price">500 ريال</p>
-                <div class="controls">
-                    <button class="btn-qty" onclick="updateItem('salad', -1)">-</button>
-                    <span id="q-salad">0</span>
-                    <button class="btn-qty" onclick="updateItem('salad', 1)">+</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- قسم لماذا نحن -->
+    <section id="why-us">
+        <h2 class="section-title">لماذا تختار Brand Oza؟</h2>
+        <ul class="features-list">
+            <li><strong>✨ دقة هندسية:</strong> نصمم بناءً على دراسة دقيقة للسوق وتفاصيل علامتك التجارية.</li>
+            <li><strong>🚀 حلول متكاملة:</strong> نوفر لك التصميم والبرمجة في مكان واحد وبأعلى جودة.</li>
+            <li><strong>📱 تجربة مستخدم ممتازة:</strong> نركز على الواجهات السلسة التي تسهل تفاعل عملائك.</li>
+            <li><strong>⏱️ التزام بالمواعيد:</strong> نحترم وقت العميل ونضمن التسليم في الوقت المتفق عليه.</li>
+        </ul>
+    </section>
 
-</div>
+    <!-- الفوتر -->
+    <footer>
+        <p>جميع الحقوق محفوظة لوكالة <strong>Brand Oza</strong> © 2026</p>
+        <p>بإدارة وتطوير: <strong>Al-Ezz Khalid</strong></p>
+    </footer>
 
-<footer>
-    <p>جميع الحقوق محفوظة لمطمy  وجبتي © 2026</p>
-    <p>تم التصميم والبرمجة بواسطة: <br><strong>Al-Ezz Khalid | Brand Oza</strong></p>
-</footer>
+    <!-- زر الواتساب للتواصل (عدل الرقم لرقمك) -->
+    <a href="https://wa.me/967776418418?text=أهلاً%20براند%20أوزا،%20أريد%20الاستفسار%20عن%20خدماتكم!" class="whatsapp-float" target="_blank">
+        💬
+    </a>
 
-<div class="cart-footer">
-    <div style="text-align: right;">
-        <div style="font-size: 0.8rem; color: #666;">إجمالي الفاتورة</div>
-        <div style="font-size: 1.2rem; font-weight: bold; color: var(--primary-red);"><span id="total-val">0</span> ريال</div>
-    </div>
-    <a href="#" class="btn-send" onclick="checkout()">إرسال الطلب (واتساب)</a>
-</div>
-
-<script>
-    let order = {
-        'mandi': { name: 'نصف حبة مندي', qty: 0, price: 3500 },
-        'madghut': { name: 'وجبة مضغوط دجاج', qty: 0, price: 3200 },
-        'salad': { name: 'سلطة خضراء', qty: 0, price: 500 }
-    };
-
-    function updateItem(id, change) {
-        order[id].qty = Math.max(0, order[id].qty + change);
-        document.getElementById('q-' + id).innerText = order[id].qty;
-        calculateTotal();
-    }
-
-    function calculateTotal() {
-        let total = 0;
-        for (let key in order) {
-            total += order[key].qty * order[key].price;
-        }
-        document.getElementById('total-val').innerText = total;
-    }
-
-    function checkout() {
-        let text = "طلب جديد من مطعم وجبتي:\n------------------\n";
-        let hasItems = false;
-        
-        for (let key in order) {
-            if (order[key].qty > 0) {
-                text += `• ${order[key].name} (عدد ${order[key].qty})\n`;
-                hasItems = true;
-            }
-        }
-        
-        if (!hasItems) {
-            alert("يرجى اختيار وجبة واحدة على الأقل!");
-            return;
-        }
-
-        text += `------------------\n💰 الإجمالي: ${document.getElementById('total-val').innerText} ريال`;
-        
-        // الرقم التجريبي (عدله لرقم المطعم لاحقاً بنظام 967)
-        let myNumber = "967776418418"; 
-        let whatsappUrl = "https://wa.me/" + myNumber + "?text=" + encodeURIComponent(text);
-        
-        window.open(whatsappUrl);
-    }
-</script>
-
+    <script>
+        // إمكانية إضافة سكريبتات تفاعلية مستقبلاً
+        console.log("Welcome to Brand Oza Official Site!");
+    </script>
 </body>
 </html>
