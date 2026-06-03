@@ -17,6 +17,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--black-bg); color: var(--text-light); line-height: 1.6; overflow-x: hidden; }
 
+        /* القائمة ثابتة في الأعلى */
         nav {
             background-color: rgba(5, 5, 5, 0.95);
             padding: 15px 30px;
@@ -48,17 +49,16 @@
         .btn-gold { background-color: transparent; color: var(--gold-primary); padding: 12px 30px; font-weight: 700; text-decoration: none; border: 2px solid var(--gold-primary); transition: 0.4s; }
         .btn-gold:hover { background-color: var(--gold-primary); color: var(--black-bg); }
 
-        section { padding: 80px 20px; text-align: center; }
+        section { padding: 100px 20px; text-align: center; }
         .section-title { font-size: 2.2rem; margin-bottom: 40px; }
         .section-title span { color: var(--gold-primary); }
         .products-grid, .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: auto; }
         .product-card, .feature-box { background: var(--dark-surface); padding: 30px; border-radius: 8px; border-bottom: 3px solid var(--gold-primary); }
-        .btn-buy { display: block; margin-top: 20px; background: var(--text-light); color: var(--black-bg); padding: 10px; text-decoration: none; font-weight: 700; }
-        
+        .btn-buy { display: block; margin-top: 20px; background: var(--text-light); color: var(--black-bg); padding: 10px; text-decoration: none; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .btn-buy:hover { background: var(--gold-primary); }
+
         footer { background: #020202; padding: 30px; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2); }
-        
-        /* زر الواتساب العائم */
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: var(--gold-primary); color: var(--black-bg); width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 25px; text-decoration: none; z-index: 1000; }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: var(--gold-primary); color: var(--black-bg); width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 25px; text-decoration: none; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body>
@@ -70,7 +70,7 @@
             <li><a href="#home">الرئيسية</a></li>
             <li><a href="#services">خدماتنا</a></li>
             <li><a href="#products">إصداراتنا</a></li>
-            <li><a href="#features">لماذا VEXO</a></li>
+            <li><a href="#features">المميزات</a></li>
         </ul>
     </nav>
 
@@ -91,19 +91,11 @@
     <section id="products">
         <h2 class="section-title">إصدارات <span>النخبة</span></h2>
         <div class="products-grid">
-            <!-- المنتج الأول -->
             <div class="product-card">
                 <h3>VEXO Prime Series</h3>
                 <p>عزل صوتي فائق وتصميم مريح.</p>
                 <div style="color:var(--gold-primary); margin: 15px 0;">70 SAR</div>
-                <a href="https://wa.me/message/ABZQVM5BM6PEI1?text=السلام%20عليكم%20ورحمة%20الله%20وبركاته.%20أود%20طلب%20منتج%20(VEXO%20Prime)%20-%20رقم%20الطلب%20370." class="btn-buy" target="_blank">اطلب مسبقاً (370)</a>
-            </div>
-            <!-- المنتج الثاني -->
-            <div class="product-card">
-                <h3>VEXO Elite Audio</h3>
-                <p>جودة احترافية وتصميم عصري.</p>
-                <div style="color:var(--gold-primary); margin: 15px 0;">90 SAR</div>
-                <a href="https://wa.me/message/ABZQVM5BM6PEI1?text=السلام%20عليكم%20ورحمة%20الله%20وبركاته.%20أود%20طلب%20منتج%20(VEXO%20Elite)%20-%20رقم%20الطلب%20371." class="btn-buy" target="_blank">اطلب مسبقاً (371)</a>
+                <button class="btn-buy" onclick="sendOrder('VEXO Prime')">اطلب مسبقاً</button>
             </div>
         </div>
     </section>
@@ -112,7 +104,7 @@
         <h2 class="section-title">لماذا <span>VEXO</span></h2>
         <div class="features-grid">
             <div class="feature-box"><h3>توصيل مجاني</h3><p>خدمة توصيل سريعة ومجانية لجميع طلباتنا داخل تعز المدينة.</p></div>
-            <div class="feature-box"><h3>نظام الأختام</h3><p>مع كل عملية شراء تحصل على ختم. عند جمع 5 أختام، ستحصل على هدية مميزة.</p></div>
+            <div class="feature-box"><h3>نظام الأختام</h3><p>5 أختام = هدية مميزة من VEXO.</p></div>
         </div>
     </section>
 
@@ -121,8 +113,21 @@
         <p style="color: var(--text-dim);">جميع الحقوق محفوظة © 2026</p>
     </footer>
 
-    <!-- زر الواتساب العائم (طلب تفاصيل المشروع) -->
-    <a href="https://wa.me/message/ABZQVM5BM6PEI1?text=أريد%20تفاصيل%20أكثر%20حول%20مشروعكم%20VEXO" class="whatsapp-float" target="_blank">💬</a>
+    <a href="https://wa.me/message/ABZQVM5BM6PEI1?text=أريد%20تفاصيل%20أكثر%20حول%20مشروعكم%20VEXO" class="whatsapp-float">💬</a>
 
+    <script>
+        function sendOrder(productName) {
+            let orderNumber = localStorage.getItem('lastOrderNumber');
+            if (!orderNumber) { orderNumber = 370; } 
+            else { orderNumber = parseInt(orderNumber) + 1; }
+            
+            localStorage.setItem('lastOrderNumber', orderNumber);
+            
+            let message = `السلام عليكم ورحمة الله وبركاته. أود طلب منتج (${productName}) - رقم الطلب ${orderNumber}. بانتظار تأكيد التوصيل المجاني إلى تعز المدينة. ⚜️`;
+            let whatsappUrl = "https://wa.me/message/ABZQVM5BM6PEI1?text=" + encodeURIComponent(message);
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
 </body>
 </html>
